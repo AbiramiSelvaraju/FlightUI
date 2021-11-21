@@ -1,0 +1,27 @@
+<!-- <p>a-header works!</p> -->
+<!-- NAVIGATION https://getbootstrap.com/docs/4.0/components/navbar/ -->
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#" style="margin-left: 1.2%; font-weight: bolder; color: aqua;">FLYHIGH</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav" style="float: left;">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/airline" routerLinkActive="active">Airline <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/flight" routerLinkActive="active">Flight</a>
+        <!-- <a class="nav-link">Flight</a> -->
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/schedule" routerLinkActive="active">Schedule Flight</a>
+        <!-- <a class="nav-link">Schedule Flight</a> -->
+      </li>
+    </ul>
+  </div>
+
+  <a routerLink="" routerLinkActive="active" style=" text-decoration: none;font-weight: bolder; border: none;float:right; margin-right: 2%;color:red;background-color: transparent;">LOGOUT</a>
+
+</nav>

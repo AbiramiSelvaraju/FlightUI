@@ -1,0 +1,61 @@
+<!-- <p>add-flight works!</p> -->
+<app-a-header></app-a-header>
+<div class='card'>
+    <div class='card-header'>
+        <a style="float:left;font-weight:normal; text-decoration:none" 
+            routerLink="/flight" routerLinkActive="active"> Back to list </a>
+      <div style="font-weight: bold; font-size: larger; text-align: center;">{{pageTitle}}</div>
+      
+    </div>
+    <div class='card-body'>
+        <form [formGroup] = "flightFormGroup" (ngSubmit)="addFlight()">
+            <div class ="add-flight-form" >
+
+              <div class="form-group col-md-2">
+                <label for="number" class="labelFont"> Airline</label><br>
+                <select formControlName="airline" class="form-control">
+                  <option [ngValue]="null" disabled>Select Airline</option>
+                  <option *ngFor="let airline of airlines" [ngValue]="airline">{{airline.name}}</option>
+                </select> 
+              </div> 
+              
+              <div class="form-group col-md-2">
+                <label for="number" class="labelFont">Number</label>
+                <input type="text" class="form-control" formControlName="number" placeholder="Enter flight number">
+              </div> 
+            
+          <br>
+              <div class="form-group col-md-2" >
+                <label for="instrumentUsed" class="labelFont">Instruments Used</label>
+                <input type="text" class="form-control" formControlName="instrumentUsed" placeholder="Enter instruments used">
+              </div>
+              
+          <br>
+              <div class="form-group col-md-2">
+                  <label for="totalBusinessSeats" class="labelFont">Total Business Seats</label>
+                  <input type="text" class="form-control" formControlName="totalBusinessSeats" placeholder="Enter count">
+              </div>
+
+              <br>
+
+              <div class="form-group col-md-2">
+                <label for="totalNonBusinessSeats" class="labelFont">Total NonBusiness Seats</label>
+                <input type="text" class="form-control" formControlName="totalNonBusinessSeats" placeholder="Enter count">
+            </div>
+
+            <div class="form-group col-md-2">
+                <label for="numberOfRows" class="labelFont">Number Of Rows</label>
+                <input type="text" class="form-control" formControlName="numberOfRows" placeholder="Enter number of rows">
+            </div>
+
+            </div>
+            <br>
+            <div class="form-group">
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </div>
+            </div>
+        
+          </form>
+    </div>
+</div>

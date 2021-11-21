@@ -1,0 +1,38 @@
+<!-- <p>flight works!</p> -->
+<app-a-header></app-a-header>
+<div class='card'>
+    <div class='card-header'>
+      <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
+      <a style="float:right;font-weight: bold;" class = 'button'
+      routerLink="/addflight" routerLinkActive="active">Add Flight</a>
+    </div>
+    <div class='card-body'>
+
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='flights.length'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Airline</th>
+              <th>Number</th>
+              <th>Business Seats Count</th>
+              <th>Non Business Seats Count</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let flight of flights; let indexOfelement=index;">
+              <td>{{indexOfelement+1}}</td>
+              <td>{{ flight.airline.name }}</td>
+              <td>{{ flight.number }}</td>
+              <td>{{ flight.totalBusinessSeats }}</td>
+              <td>{{ flight.totalNonBusinessSeats }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </div>
+

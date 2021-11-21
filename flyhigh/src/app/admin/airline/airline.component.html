@@ -1,0 +1,36 @@
+<!-- <p>airline works!</p> -->
+
+<app-a-header></app-a-header>
+<div class='card'>
+    <div class='card-header'>
+      <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
+      <a style="float:right;font-weight: bold;" class = 'button'
+      routerLink="/addairline" routerLinkActive="active" >Add Airline</a>
+    </div>
+    <div class='card-body'>
+
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='airlines.length'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Contact Address</th>
+              <th>Contact Number</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let airline of airlines; let indexOfelement=index;">
+              <td>{{indexOfelement+1}}</td>
+              <td>{{ airline.name }}</td>
+              <td>{{ airline.contactAddress }}</td>
+              <td>{{ airline.contactNumber }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </div>

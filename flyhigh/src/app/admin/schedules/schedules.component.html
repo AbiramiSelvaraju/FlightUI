@@ -1,0 +1,41 @@
+<!-- <p>schedules works!</p> -->
+
+<!-- <p>flight works!</p> -->
+<app-a-header></app-a-header>
+<div class='card'>
+    <div class='card-header'>
+      <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
+      <a style="float:right;font-weight: bold;" class = 'button'
+      routerLink="/addschedule" routerLinkActive="active">Add Schedule</a>
+    </div>
+    <div class='card-body'>
+
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='flightSchedules.length'>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Flight</th>
+              <th>From Place</th>
+              <th>To Place</th>
+              <th>Estimated Journey Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let schedule of flightSchedules; let indexOfelement=index;">
+              <td>{{indexOfelement+1}}</td>
+              <td>{{ schedule.flight.number }}</td>
+              <td>{{ schedule.fromPlace.name }}</td>
+              <td>{{ schedule.toPlace.name }}</td>
+              <td>{{ schedule.estimateJourneyDuration }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </div>
+
+

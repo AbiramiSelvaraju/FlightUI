@@ -1,0 +1,71 @@
+<!--  <p>add-schedule works!</p> -->
+<app-a-header></app-a-header>
+<div class='card'>
+    <div class='card-header'>
+        <a style="float:left;font-weight:normal; text-decoration:none" 
+            routerLink="/schedule" routerLinkActive="active"> Back to list </a>
+      <div style="font-weight: bold; font-size: larger; text-align: center;">{{pageTitle}}</div>
+      
+    </div>
+    <div class='card-body'>
+        <form [formGroup] = "flightScheduleFormGroup" (ngSubmit)="addFlightSchedule()">
+            <div class ="add-schedule-form">
+
+              <div class="form-group col-md-2">
+                <label for="flight" class="labelFont">Flight</label><br>
+                <select formControlName="flight" class="form-control">
+                  <option [ngValue]="null" disabled>Select Flight Number</option>
+                  <option *ngFor="let flight of flights" [ngValue]="flight">{{flight.number}}</option>
+                </select> 
+              </div> 
+
+              <div class="form-group col-md-2" style="width: 20%;">
+                <label for="fromTime" class="labelFont">From Time</label>
+                <input type="text" formControlName="fromTime" class="form-control" id="fromTime" >
+              </div> 
+                     
+              <div class="form-group col-md-2" >
+                <label for="toTime" class="labelFont">ToTime</label>
+                <input type="text" formControlName="toTime" class="form-control" id="toTime" >
+              </div>
+              
+              <div class="form-group col-md-2">
+                <label for="fromPlace" class="labelFont">From Place</label><br>
+                <select formControlName="fromPlace" class="form-control">
+                  <option [ngValue]="null" disabled>Select Place</option>
+                  <option *ngFor="let place of places" [ngValue]="place">{{place.name}}</option>
+                </select> 
+              </div> 
+          
+              <div class="form-group col-md-2">
+                <label for="toPlace" class="labelFont">To Place</label><br>
+                <select formControlName="toPlace" class="form-control">
+                  <option [ngValue]="null" disabled>Select Place</option>
+                  <option *ngFor="let place of places" [ngValue]="place">{{place.name}}</option>
+                </select> 
+              </div> 
+
+              <div class="form-group col-md-2">
+                <label for="tripType" class="labelFont">Trip Type</label><br>
+                <select formControlName="tripType" class="form-control">
+                  <option [ngValue]="null" disabled>Select Trip Type</option>
+                  <option *ngFor="let tripType of tripTypes" [ngValue]="tripType">{{tripType.name}}</option>
+                </select> 
+              </div> 
+
+              <div class="form-group col-md-2">
+                <label for="schedule" class="labelFont">Schedule Type</label><br>
+                <select formControlName="schedule" class="form-control">
+                  <option [ngValue]="null" disabled>Select Schedule Type</option>
+                  <option *ngFor="let schedule of schedules" [ngValue]="schedule">{{schedule.days}}</option>
+                </select> 
+              </div> 
+            </div>
+            <br>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        
+          </form>
+    </div>
+</div>
