@@ -18,6 +18,7 @@
               <th>Name</th>
               <th>Contact Address</th>
               <th>Contact Number</th>
+              <th>Block /Airline Status</th>
             </tr>
           </thead>
           <tbody>
@@ -26,6 +27,16 @@
               <td>{{ airline.name }}</td>
               <td>{{ airline.contactAddress }}</td>
               <td>{{ airline.contactNumber }}</td>
+              <td>
+                <p *ngIf="airline.isActive==true">Active 
+                <a (click)="blockAirline(airline.id)"  routerLink="/airine" routerLinkActive="active"  style=" text-decoration: none;font-weight: 500; border: none;color:red;background-color: transparent;">Block</a>
+                  <!-- <a *ngIf="airline.isActive==true" style="text-decoration: none" >Block </a> -->
+                 </p> 
+                <p *ngIf="airline.isActive==false">Blocked
+                  <a (click)="unBlockAirline(airline.id)"  routerLink="/airine" routerLinkActive="active"  style=" text-decoration: none;font-weight: 500; border: none;color:rgb(77, 212, 122);background-color: transparent;">UnBlock</a>
+                  <!-- <a *ngIf="airline.isActive==true" style="text-decoration: none" >Block </a> -->
+                 </p> 
+                </td>
             </tr>
           </tbody>
         </table>

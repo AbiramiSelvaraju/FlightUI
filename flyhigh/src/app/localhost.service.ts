@@ -39,4 +39,12 @@ export class LocalhostService {
     addFlightSchedule(data: any): Observable<any>{
       return this.http.post(`${baseUrl}/v1/api/flightTravelDetail`, data);
   }
+
+  blockAirline(data: number): Observable<any>{
+    return this.http.put(`${baseUrl}/v1/api/airline/block`,data);
+}
+
+unBlockAirline(data: number): Observable<any>{
+  return this.http.put(`${baseUrl}/v1/api/airline/unblock`,data);
+}
 }
