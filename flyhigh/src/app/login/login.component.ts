@@ -31,16 +31,13 @@ export class LoginComponent implements OnInit {
   loginProcess(){
     if(this.formGroup.valid){
         this.service.login(this.formGroup.value).subscribe(result=>{
-        localStorage.setItem('token', result['token']);
+        this.service.setToken(result['token']);
+        this.service.setRole(result['role']);
           if(result.token!=null){
-              // console.log(result); 
-              let jwtData = result.token.split('.')[1];
-              let decodedJwtJsonData = JSON.parse(window.atob(jwtData));
-              // console.log('jwtData: ' + decodedJwtJsonData.role);
-              if(decodedJwtJsonData.role=="ROLE_USER"){
-                this.route.navigate(['/flight']);
+                if(this.service.isUserLoggedIn()){
+                this.route.navigate(['/flightSearch']);
               }
-              else if(decodedJwtJsonData.role=="ROLE_ADMIN"){
+              else if(this.service.isAdminLoggedIn()){
                 this.route.navigate(['/airline']);
               }
           }

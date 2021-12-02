@@ -1,47 +1,51 @@
-<!-- <p>airline works!</p> -->
-
 <app-a-header></app-a-header>
 <div class='card'>
-    <div class='card-header'>
-      <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
-      <a style="float:right;font-weight: bold;" class = 'button'
-      routerLink="/addairline" routerLinkActive="active" >Add Airline</a>
-    </div>
-    <div class='card-body'>
-
-      <div class='table-responsive'>
-        <table class='table'
-               *ngIf='airlines.length'>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Name</th>
-              <th>Contact Address</th>
-              <th>Contact Number</th>
-              <th>Block /Airline Status</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let airline of airlines; let indexOfelement=index;">
-              <td>{{indexOfelement+1}}</td>
-              <td>{{ airline.name }}</td>
-              <td>{{ airline.contactAddress }}</td>
-              <td>{{ airline.contactNumber }}</td>
-              <td>
-                <p *ngIf="airline.isActive==true">Active 
-                <a (click)="blockAirline(airline.id)"  routerLink="/airine" routerLinkActive="active"  style=" text-decoration: none;font-weight: 500; border: none;color:red;background-color: transparent;">Block</a>
-                  <!-- <a *ngIf="airline.isActive==true" style="text-decoration: none" >Block </a> -->
-                 </p> 
-                <p *ngIf="airline.isActive==false">Blocked
-                  <a (click)="unBlockAirline(airline.id)"  routerLink="/airine" routerLinkActive="active"  style=" text-decoration: none;font-weight: 500; border: none;color:rgb(77, 212, 122);background-color: transparent;">UnBlock</a>
-                  <!-- <a *ngIf="airline.isActive==true" style="text-decoration: none" >Block </a> -->
-                 </p> 
-                </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-  
-    </div>
-  
+  <div class='card-header'>
+    <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
+    <a style="float:right;font-weight: bold;" class='button' routerLink="/addairline" routerLinkActive="active">Add
+      Airline</a>
   </div>
+  <div class='card-body'>
+
+    <div class='table-responsive'>
+      <table class='table' *ngIf='airlines.length'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Contact Address</th>
+            <th>Contact Number</th>
+            <th>Block /Airline Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let airline of airlines; let indexOfelement=index;">
+            <td>{{indexOfelement+1}}</td>
+            <td>{{ airline.name }}</td>
+            <td>{{ airline.contactAddress }}</td>
+            <td>{{ airline.contactNumber }}</td>
+            <td>
+              <p *ngIf="airline.isActive==true">Active
+                <a (click)="blockAirline(airline.id)" routerLink="/airine" routerLinkActive="active"
+                  style="text-decoration: none;font-weight: 500; border: none;color:red;background-color: transparent;">Block</a>
+              </p>
+              <p *ngIf="airline.isActive==false">Blocked
+                <a (click)="unBlockAirline(airline.id)" routerLink="/airine" routerLinkActive="active"
+                  style="text-decoration: none;font-weight: 500; border: none;color:rgb(77, 212, 122);background-color: transparent;">UnBlock</a>
+              </p>
+            </td>
+            <td>
+              <p>
+                <a routerLink="/updateAirline/{{airline.id}}">
+                  <button type="submit" class="btn btn-primary">Edit</button>
+                </a>
+                <!-- <a (click)="blockAirline(airline.id)">
+                  <button style="text-decoration: none;font-weight: 500; border: none;color:red;background-color: transparent;">Block</a> -->
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

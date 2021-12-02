@@ -1,0 +1,101 @@
+<app-u-header></app-u-header>
+<div class='card'>
+    <div class='card-header'>
+        <a style="float:left;font-weight:normal; text-decoration:none" routerLink="/flightSearch"
+            routerLinkActive="active"> Back to search </a>
+        <div style="font-weight: bold; font-size: larger; text-align: center;">{{pageTitle}}</div>
+
+    </div>
+    <div class='card-body'>
+        <form  [formGroup]="bookTicketFormGroup" (ngSubmit)="bookTicket()">
+            <div class="book-ticket-form">
+
+                <div>
+                <div class="form-group col-md-2"  style="float: left;">
+                    <label for="username" class="labelFont">Username</label>
+                    <input type="text" formControlName="username" class="form-control" id="username">
+                </div>
+
+                <!-- <br> -->
+
+                <div class="form-group col-md-2" style="float: left;margin-left: 2%;">
+                    <label for="emailId" class="labelFont">Email ID</label>
+                    <input type="text" formControlName="emailId" class="form-control" id="emailId">
+                </div>
+
+                <!-- <br> -->
+
+                <div class="form-group col-md-2" style="float: left;margin-left: 2%;">
+                    <label for="passengerCount" class="labelFont">Passengers Count</label><br>
+                    <input type="text" formControlName="totalSeatsBooked" class="form-control" id="totalSeatsBooked">
+                </div>
+
+                <!-- <br> -->
+
+                <div class="form-group col-md-2" style="float: left;margin-left: 2%;">
+                    <label for="mealType" class="labelFont">Meal Preference</label><br>
+                    <select formControlName="mealType" class="form-control">
+                        <option [ngValue]="null" disabled>Select Meal Type</option>
+                        <option *ngFor="let mealType of mealTypes" [ngValue]="mealType">{{mealType.name}}</option>
+                    </select>
+                </div>
+
+                <div class="col-md-2" style="float: left;margin-left: 2%;">
+                    <label for="journeyDate" class="form-label">Travel Date</label>
+                    <input type="datetime-local" class="form-control" id="journeyDate" formControlName="journeyDate">
+                  </div>
+
+            </div>
+
+                <br>
+
+                <div formArrayName="passengers">
+                    <br>
+                    <div *ngFor="let n of passengers; let i = index;">
+                        <br>
+                        <div [formGroupName]="i">
+                            <br>
+                            <div class="col-md-2" style="float: left;">
+                                <label class="form-label">Passenger Name</label>
+                                <input type="text" class="form-control" id="name"
+                                    formControlName="name">
+                            </div>
+                            <div class="col-md-2" style="float: left;margin-left: 2%;">
+                                <label class="form-label">Gender</label>
+                                <select formControlName="gender" class="form-control">
+                                    <option [ngValue]="null" disabled>Select Gender</option>
+                                    <option *ngFor="let g of gender" [ngValue]="g">{{g.name}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="float: left;margin-left: 2%;">
+                                <label class="form-label">Age</label>
+                                <input type="text" class="form-control" id="age" formControlName="age">
+                            </div>
+                            <div class="col-md-2" style="float: left;margin-left: 2%;">
+                                <label class="form-label">Seat Number</label>
+                                <select formControlName="seatNumber" class="form-control">
+                                    <option [ngValue]="null" disabled>Select Seats</option>
+                                    <option *ngFor="let seat of flightSeats" [ngValue]="seat">{{seat.number}}</option>
+                                </select>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                
+                <br>
+
+                <div class="col-6">
+                    <br>
+                    <button type="button" class="btn btn-primary" (click)="addPassenger()">Add Passenger</button>
+                </div>
+
+                <div class="form-group text-center">
+                    <button [disabled] ="bookTicketFormGroup.invalid" type="submit" class="btn btn-primary">Submit</button>
+                  </div>
+
+            </div>
+        </form>
+    </div>
+</div>

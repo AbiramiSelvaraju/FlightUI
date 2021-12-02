@@ -11,6 +11,21 @@ export class SchedulesComponent {
   pageTitle: string = 'Schedule List';
   flightSchedules: any[] = [];
 
+  places = [
+    { id: 1, name: "Coimbatore" },
+    { id: 2, name: "Chennai"},
+    { id: 3, name: "Mumbai" },
+    { id: 4, name: "Pune" },
+    { id: 5, name: "Kochi" }
+  ];
+
+  tripTypes =[
+    { id: 1, name: "one-way" },
+    { id: 2, name: "round-trip"},
+  ];
+
+  flights: any[] = [];
+
   constructor(private service: LocalhostService){}
 
   public ngOnInit(){
@@ -18,20 +33,5 @@ export class SchedulesComponent {
       this.flightSchedules = result);
     console.log(this.flightSchedules); 
   }
-
-  // airlines: any[] = [
-  //   {
-  //     "name": "Indigo",
-  //     "contactAddress": "CBE",
-  //     "contactNumber": "986432",
-  //     "status": true
-  //   },
-  //   {
-  //     "name": "Deccan Air",
-  //     "contactAddress": "CN",
-  //     "contactNumber": "776432",
-  //     "status": false
-  //   }
-  // ];
 
 }

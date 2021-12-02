@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { LocalhostService } from 'src/app/localhost.service';
 import { Flight } from 'src/app/model/flight.model';
 import { FlightSchedule } from 'src/app/model/flightSchedule.model';
@@ -14,15 +15,7 @@ export class AddScheduleComponent {
   pageTitle: string = 'Add Schedule';
   flightScheduleFormGroup: FormGroup;
   
-  constructor(private service: LocalhostService) { }
-
-  
-  // flights = [
-  //   { id: 1, number: "FLIGHT 1"},
-  //   { id: 2, number: "FLIGHT 2"},
-  //   { id: 3, number: "FLIGHT 3"}
-  // ];
-
+  constructor(private service: LocalhostService, private route: Router) { }
 
   places = [
     { id: 1, name: "Coimbatore" },
@@ -77,11 +70,7 @@ export class AddScheduleComponent {
       const flightSchedule = new FlightSchedule().deserialize(this.flightScheduleFormGroup.value);
 
       this.service.addFlightSchedule(flightSchedule).subscribe(result=>{
-        if(result!=null){
-            console.log(result);
-        }else{
-          console.log("flightSchedule add fails");
-        }
+        this.route.navigate(['/schedule']);
       });
       
     }

@@ -1,0 +1,85 @@
+<app-u-header></app-u-header>
+<div class='card'>
+  <div class='card-header'>
+    <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
+  </div>
+
+  <div class='card-body'>
+    <form [formGroup]="flightSearchFormGroup" (ngSubmit)="getFlightSchedules()">
+      <div class="search-flight-form">
+
+        <div class="form-group col-md-2">
+          <label for="fromPlace" class="labelFont">From Place</label><br>
+          <select formControlName="fromPlace" class="form-control">
+            <option [ngValue]="null" disabled>Select Place</option>
+            <option *ngFor="let place of places" [ngValue]="place">{{place.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="toPlace" class="labelFont">To Place</label><br>
+          <select formControlName="toPlace" class="form-control">
+            <option [ngValue]="null" disabled>Select Place</option>
+            <option *ngFor="let place of places" [ngValue]="place">{{place.name}}</option>
+          </select>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="tripType" class="labelFont">Trip Type</label><br>
+          <select formControlName="tripType" class="form-control">
+            <option [ngValue]="null" disabled>Select Trip Type</option>
+            <option *ngFor="let tripType of tripTypes" [ngValue]="tripType">{{tripType.name}}</option>
+          </select>
+        </div>
+
+        <div class="col-md-2">
+          <label for="journeyDate" class="form-label">Travel Date</label>
+          <input type="datetime-local" class="form-control" id="journeyDate" formControlName="departOn">
+        </div>
+
+      </div>
+
+      <br>
+
+      <div class="form-group text-center">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <div class='card-body'>
+
+    <div class='table-responsive'>
+      <table class='table' *ngIf='flightSchedules.length'>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Airline Name</th>
+            <th>Flight Number</th>
+            <th>From Time</th>
+            <th>To Time</th>
+            <th>Ticket Cost</th>
+            <th>Estimated Journey Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let schedule of flightSchedules; let indexOfelement=index;">
+            <td>{{indexOfelement+1}}</td>
+            <td>{{ schedule.name }}</td>
+            <td>{{ schedule.number }}</td>
+            <td>{{ schedule.fromTime}}</td>
+            <td>{{ schedule.toTime }}</td>
+            <td>{{ schedule.ticketCost }}</td>
+            <td>{{ schedule.estimateJourneyDuration }}</td>
+            <td>
+              <p>
+                <a routerLink="/bookTicket/{{schedule.flightScheduleId}}" routerLinkActive="active"
+                  style=" text-decoration: none;font-weight: 500; border: none;color:rgb(94, 218, 131);background-color: transparent;">Book</a>
+              </p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

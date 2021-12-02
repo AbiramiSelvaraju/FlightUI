@@ -1,0 +1,48 @@
+
+<app-u-header></app-u-header>
+<div class='card'>
+    <div class='card-header'>
+      <div style="float:left;font-weight: bold; font-size: larger;margin-top: 5px;">{{pageTitle}}</div>
+    </div>
+    <div class='card-body'>
+
+      <div class='table-responsive'>
+        <table class='table'
+               *ngIf='tickets.length'>
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>PNR</th>
+              <th>Email ID</th>
+              <th>Flight</th>
+              <th>Passengers Count</th>
+              <th>Ticket Cost</th>
+              <th>Journey Date</th>
+              <th>Booked On</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ticket of tickets; let indexOfelement=index;">
+              <td>{{ indexOfelement+1 }}</td>
+              <td>{{ ticket.pnrNumber }}</td>
+              <td>{{ ticket.emailId }}</td>
+              <td>{{ ticket.flightTravelDetails.flight.number }}</td>
+              <td>{{ ticket.totalSeatsBooked}}</td>
+              <td>{{ ticket.flightTravelDetails.ticketCost }}</td>
+              <td>{{ ticket.journeyDate }}</td>
+              <td>{{ ticket.createdOn}}</td>
+              
+              <td>
+                <p *ngIf="ticket.isCancelled==false" >Confirmed 
+                <a (click)="cancelTicket(ticket.id)"  routerLink="/airine" routerLinkActive="active"  style=" text-decoration: none;font-weight: 500; border: none;color:red;background-color: transparent;">Cancel Ticket</a>
+                 </p> 
+                 <p *ngIf="ticket.isCancelled==true">Cancelled </p> 
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  
+  </div>

@@ -8,19 +8,26 @@ import { AddScheduleComponent } from './add-schedule/add-schedule.component';
 import { AirlineComponent } from './airline/airline.component';
 import { FlightComponent } from './flight/flight.component';
 import { SchedulesComponent } from './schedules/schedules.component';
+import { UpdateAirlineComponent } from './update-airline/update-airline.component';
+import { UpdateFlightComponent } from './update-flight/update-flight.component';
+import { AdminAuthGuard } from '../auth-guard.service';
+import { UserAuthGuard } from '../user-guard.service';
 
 const appRoutes: Routes = [
-  { path: 'airline', component: AirlineComponent },
+  { path: 'airline',  canActivate:[AdminAuthGuard], component: AirlineComponent },
   { path: '', component: LoginComponent },
-  { path: 'addairline', component: AddAirlineComponent },
-  { path: 'addflight', component: AddFlightComponent },
-  { path: 'flight', component: FlightComponent },
-  { path: 'addschedule', component: AddScheduleComponent },
-  { path: 'schedule', component: SchedulesComponent }
+  { path: 'addairline', canActivate:[AdminAuthGuard], component: AddAirlineComponent },
+  { path: 'addflight',  canActivate:[AdminAuthGuard],component: AddFlightComponent },
+  { path: 'flight', canActivate:[AdminAuthGuard], component: FlightComponent },
+  { path: 'addschedule', canActivate:[AdminAuthGuard], component: AddScheduleComponent },
+  { path: 'schedule', canActivate:[AdminAuthGuard], component: SchedulesComponent },
+  { path: 'updateAirline/:airlineId', canActivate:[AdminAuthGuard], component: UpdateAirlineComponent },
+  { path: 'updateFlight/:flightId', canActivate:[AdminAuthGuard], component: UpdateFlightComponent }
 ];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+  ],
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes)

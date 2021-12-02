@@ -14,16 +14,8 @@ export class AddFlightComponent {
   pageTitle: string = 'Add Flight';
 
   flightFormGroup: FormGroup;
-  // fb: FormBuilder;
 
-  // airlines = [
-  //   { id: 1, name: "INDIGO" },
-  //   { id: 2, name: "DECCAN AIR"},
-  //   { id: 3, name: "SPICE JET" }
-  // ];
-
-
-  constructor(private service: LocalhostService) { }
+  constructor(private service: LocalhostService, private route: Router) { }
   airlines: any[] = [];
 
   ngOnInit(): void {
@@ -54,11 +46,7 @@ export class AddFlightComponent {
       const flight = new Flight().deserialize(this.flightFormGroup.value);
 
       this.service.addFlight(flight).subscribe(result=>{
-        if(result!=null){
-            console.log(result);
-        }else{
-          console.log("flight add fails");
-        }
+        this.route.navigate(['flight']);
       });
       
       

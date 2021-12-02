@@ -18,16 +18,10 @@ import { HTTP_INTERCEPTORS,HttpClientModule } from '@angular/common/http';
 import { TokenService } from './token.service';
 
 import { AdminModule } from './admin/admin.module';
+import { UserModule } from './user/user.module';
+import { UpdateAirlineComponent } from './admin/update-airline/update-airline.component';
+import { UpdateFlightComponent } from './admin/update-flight/update-flight.component';
 
-// const appRoutes: Routes = [
-//   { path: 'airline', component: AirlineComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'addairline', component: AddAirlineComponent },
-//   { path: 'addflight', component: AddFlightComponent },
-//   { path: 'flight', component: FlightComponent },
-//   { path: 'addschedule', component: AddScheduleComponent },
-//   { path: 'schedule', component: SchedulesComponent }
-// ];
 
 @NgModule({
   declarations: [
@@ -40,7 +34,9 @@ import { AdminModule } from './admin/admin.module';
     AddFlightComponent,
     SchedulesComponent,
     AddScheduleComponent,
-    LoginComponent
+    LoginComponent,
+    UpdateAirlineComponent,
+    UpdateFlightComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +44,8 @@ import { AdminModule } from './admin/admin.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
+    UserModule
     // RouterModule.forRoot(appRoutes)
   ],
   providers: [ {provide: HTTP_INTERCEPTORS, useClass: TokenService, multi: true}],

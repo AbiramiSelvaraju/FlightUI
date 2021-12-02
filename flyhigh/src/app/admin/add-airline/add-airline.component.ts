@@ -18,9 +18,9 @@ export class AddAirlineComponent {
 
   ngOnInit(): void {
     this.initForm();
-   }
+  }
 
-  initForm(){
+  initForm() {
     this.airlineFormGroup = new FormGroup({
       name: new FormControl('', Validators.required),
       contactAddress: new FormControl('', Validators.required),
@@ -28,23 +28,15 @@ export class AddAirlineComponent {
     });
   }
 
-  addAirline(){
-    if(this.airlineFormGroup.valid){
-
-        console.log(this.airlineFormGroup.value);
-
-        this.service.addAirline(this.airlineFormGroup.value).subscribe(result=>{
-          if(result!=null){
-              console.log(result);
-          }else{
-            console.log("airline add fails");
-          }
-        });
-        
-        
-      }
+  addAirline() {
+    if (this.airlineFormGroup.valid) {
+      console.log(this.airlineFormGroup.value);
+      this.service.addAirline(this.airlineFormGroup.value).subscribe(result => {
+        this.route.navigate(['airline']); 
+      });
     }
+  }
 }
 
-    
+
 
